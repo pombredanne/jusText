@@ -18,13 +18,10 @@ with open("README.rst") as readme:
     with open("CHANGELOG.rst") as changelog:
         long_description = readme.read() + "\n\n" + changelog.read()
 
-with open("LICENSE.rst") as file:
-    license = file.read()
-
 
 setup(
     name="jusText",
-    version="2.0.0",
+    version="2.1.1",
     description="Heuristic based boilerplate removal tool",
     long_description=long_description,
     author="Jan Pomikálek",
@@ -32,7 +29,7 @@ setup(
     maintainer="Michal Belica",
     maintainer_email="miso.belica@gmail.com",
     url="https://github.com/miso-belica/jusText",
-    license=license,
+    license="The BSD 2-Clause License",
     install_requires=[
         "lxml>=2.2.4",
     ],

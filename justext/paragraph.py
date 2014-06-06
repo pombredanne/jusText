@@ -10,8 +10,9 @@ from .utils import normalize_whitespace
 
 class Paragraph(object):
     """Object representing one block of text in HTML."""
-    def __init__(self, dom_path):
-        self.dom_path = ".".join(dom_path)
+    def __init__(self, path):
+        self.dom_path = path.dom
+        self.xpath = path.xpath
         self.text_nodes = []
         self.chars_count_in_links = 0
         self.tags_count = 0
@@ -48,7 +49,7 @@ class Paragraph(object):
         count = 0
 
         for word in self.text.split():
-            if word in stopwords:
+            if word.lower() in stopwords:
                 count += 1
 
         return count
@@ -61,8 +62,8 @@ class Paragraph(object):
         return self.stopwords_count(stopwords) / words_count
 
     def links_density(self):
-        text_lenght = len(self.text)
-        if text_lenght == 0:
+        text_length = len(self.text)
+        if text_length == 0:
             return 0
 
-        return self.chars_count_in_links / text_lenght
+        return self.chars_count_in_links / text_length

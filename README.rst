@@ -9,7 +9,7 @@ jusText
 
 Program jusText is a tool for removing boilerplate content, such as navigation
 links, headers, and footers from HTML pages. It is
-`designed <https://code.google.com/p/justext/wiki/Algorithm>`_ to preserve
+`designed <doc/algorithm.rst>`_ to preserve
 mainly text containing full sentences and it is therefore well suited for
 creating linguistic resources such as Web corpora. You can
 `try it online <http://nlp.fi.muni.cz/projects/justext/>`_.
@@ -98,7 +98,7 @@ Run tests via
 
 .. code-block:: bash
 
-  $ nosetests tests
+  $ nosetests-2.6 && nosetests-3.2 && nosetests-2.7 && nosetests-3.3
 
 
 Acknowledgements

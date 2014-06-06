@@ -86,11 +86,11 @@ def output_default(paragraphs, fp=sys.stdout, no_boilerplate=True):
                 tag = 'h'
             else:
                 tag = 'p'
+        elif no_boilerplate:
+            continue
         else:
-            if no_boilerplate:
-                continue
-            else:
-                tag = 'b'
+            tag = 'b'
+
         print('<%s> %s' % (tag, cgi.escape(paragraph.text)), file=fp)
 
 
@@ -100,9 +100,14 @@ def output_detailed(paragraphs, fp=sys.stdout):
     attributes are added: class, cfclass and heading.
     """
     for paragraph in paragraphs:
-        print('<p class="%s" cfclass="%s" heading="%i"> %s' % (
-            paragraph.class_type, paragraph.cf_class,
-            int(paragraph.heading), cgi.escape(paragraph.text)), file=fp)
+        output = '<p class="%s" cfclass="%s" heading="%i" xpath="%s"> %s' % (
+            paragraph.class_type,
+            paragraph.cf_class,
+            int(paragraph.heading),
+            paragraph.xpath,
+            cgi.escape(paragraph.text)
+        )
+        print(output, file=fp)
 
 
 def output_krdwrd(paragraphs, fp=sys.stdout):
@@ -123,6 +128,7 @@ def output_krdwrd(paragraphs, fp=sys.stdout):
                 cls = 3
         else:
             cls = 1
+
         for text_node in paragraph.text_nodes:
             print('%i\t%s' % (cls, text_node.strip()), file=fp)
 
