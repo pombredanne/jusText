@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 from __future__ import absolute_import
 from __future__ import division, print_function, unicode_literals
@@ -48,7 +48,7 @@ class TestStringUtils(unittest.TestCase):
 
     def test_normalize_newline_and_tab(self):
         string = "123 \n456\t\n"
-        expected = "123 456 "
+        expected = "123\n456\n"
         tools.assert_equal(expected, normalize_whitespace(string))
 
     def test_normalize_non_break_spaces(self):
